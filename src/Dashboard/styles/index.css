@@ -1,0 +1,160 @@
+.percentage {
+    position: relative;
+}
+.percentage:hover span {
+    opacity: 1;
+}
+.percentage span{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+    opacity: 0;
+}
+
+.dashboard {
+    --table-width: min(720px, 100%);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    padding: 16px;
+    color: #1f2937;
+}
+
+.dashboard pre {
+    background: #0b1220;
+    color: #c7d2fe;
+    padding: 12px;
+    border-radius: 8px;
+    overflow: auto;
+    max-height: 240px;
+    margin: 0 0 16px;
+}
+
+.dashboard .info {
+    background: #0b1220;
+    color: #c7d2fe;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 0 0 16px;
+    display: grid;
+    gap: 6px;
+}
+
+.dashboard button {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #374151;
+    background: #111827;
+    color: #e5e7eb;
+    transition: background .15s ease, transform .05s ease;
+}
+
+.dashboard button:hover {
+    background: #0b1220;
+}
+
+.dashboard button:active {
+    transform: translateY(1px);
+}
+
+.dashboard table {
+    border-collapse: collapse;
+    width: var(--table-width);
+    max-width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 8px 0 12px;
+}
+
+.dashboard table tbody tr td {
+    border: 1px solid #d1d5db;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+    min-width: 48px;
+}
+
+.dashboard table tbody tr td.percentage {
+    cursor: pointer;
+    position: relative;
+}
+
+.dashboard table tbody tr td span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard > p {
+    margin: 8px 0 0;
+    color: #6b7280;
+}
+
+
+.dashboard form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.dashboard form > p {
+    flex: 1 1 100%;
+    margin: 0 0 4px;
+    font-weight: 600;
+}
+
+.dashboard form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 100%;
+}
+
+.dashboard form label > span {
+    color: #374151;
+    font-size: 14px;
+    text-align: center;
+}
+
+.dashboard form input[type="number"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+    color: #111827;
+}
+
+.dashboard form input[type="number"]:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.dashboard form > button,
+.dashboard form > div {
+    flex: 1 1 100%;
+}
+
+@media (min-width: 1024px) {
+    .dashboard form {
+        justify-content: center;
+    }
+    .dashboard form label {
+        width: 50%;
+        flex: initial;
+    }
+    .dashboard form > button,
+    .dashboard form > div {
+        width: 50%;
+        flex: initial;
+    }
+}
