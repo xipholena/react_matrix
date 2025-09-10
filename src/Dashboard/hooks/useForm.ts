@@ -32,6 +32,9 @@ const useForm = ({setValues, setIsDisabled, setMatrix, values, generateMatrix, m
         if(values.M === 0 || values.N === 0 ) return alert(
             "Please fill M and N fields"
         )
+        if(values.M > 100 || values.N > 100 ) return alert(
+            "The maximum number of rows and columns is 100"
+        )
         setIsDisabled(true)
         generateMatrix()
     }
