@@ -2,10 +2,12 @@
   "name": "react-matrix",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://xipholena.github.io/react_matrix",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5"
+    "@types/react-dom": "^19.1.5",
+    "gh-pages": "^6.3.0"
   }
 }
