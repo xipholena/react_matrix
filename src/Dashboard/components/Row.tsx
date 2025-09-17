@@ -1,25 +1,27 @@
 import React, {Fragment} from "react";
 import Cell from "./Cell";
-import useRow from "../hooks/useRow";
-import {CellType} from "../types";
+import {CellType, RowCalculations} from "../types";
 import "../styles/index.css"
 
 type Props = {
     row: CellType[],
-    quantity: number,
     rowIndex: number,
-    rowLength: number,
     removeRow: (rowIndex: number) => void,
     matrix: CellType[][]
+    rowCalculations: RowCalculations  | null
 }
-const Row = ({ row, quantity, rowIndex, rowLength, removeRow, matrix }: Props) => {
-    const { maxValue, sum } = useRow({rowIndex, matrix, row, rowLength})
 
+const Row = ({ row, rowIndex, removeRow, matrix, rowCalculations }: Props) => {
     return (
-        <tr>
+        <tr
+        data-row-index={rowIndex}>
             {row.map((cell, cellIndex) => (
                 <Fragment key={cellIndex}>
-                    <Cell cell={cell}  quantity={quantity} rowIndex={rowIndex} maxValue={maxValue} sum={sum}/>
+                    <Cell
+                        cell={cell}
+                        heat={rowCalculations ? rowCalculations?.heat[cellIndex] : ''}
+                        percentage={rowCalculations ? rowCalculations?.percentage[cellIndex] : ''}
+                    />
                 </Fragment>
             ))}
             {rowIndex !== matrix.length - 1 && (
@@ -32,4 +34,4 @@ const Row = ({ row, quantity, rowIndex, rowLength, removeRow, matrix }: Props) =
     )
 }
 
-export default Row
+export default React.memo(Row)

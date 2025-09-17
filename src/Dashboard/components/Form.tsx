@@ -1,11 +1,11 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import useForm from "../hooks/useForm";
-import {CellType, inputValues} from "../types";
+import {CellType, InputValues} from "../types";
 import "../styles/index.css"
 
 type Props =  {
-    values: inputValues;
-    setValues: Dispatch<SetStateAction<inputValues>>;
+    values: InputValues;
+    setValues: Dispatch<SetStateAction<InputValues>>;
     generateMatrix:  () => CellType[][];
     setMatrix: React.Dispatch<React.SetStateAction<CellType[][] | null>>
     matrixLength?: number;

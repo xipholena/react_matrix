@@ -1,38 +1,34 @@
-import React, {useContext} from "react";
-import useCell from "../hooks/useCell";
+import React from "react";
 import {CellType} from "../types";
 import "../styles/index.css"
 
-import DashboardContext from "../context/dashboardContext";
-
 type Props = {
     cell: CellType;
-    quantity: number;
-    rowIndex: number,
-    maxValue?: number,
-    sum?: number,
+    heat: string,
+    percentage: string,
 }
-const Cell = ({cell, quantity, rowIndex, maxValue, sum}: Props) => {
 
-    const {percentageSum, percentageColor} = useCell({maxValue, cell, sum})
-    const ctx = useContext(DashboardContext);
-    const findNearestValue = ctx?.findNearestValue ?? (() => undefined);
-    const increaseCell = ctx?.increaseCell ?? (() => undefined);
-
+const Cell = ({cell,  heat, percentage}: Props) => {
     return (
-        <td className={cell.isBlocked ? "" : "percentage"}
-            onMouseEnter={() => cell.isBlocked ? null : findNearestValue(cell?.amount, quantity)}
-            onMouseLeave={()  => findNearestValue() }
-            onClick={()=>increaseCell(cell, rowIndex)}
+        <td
+            data-id={cell.id}
+            data-amount={cell.amount}
+            data-is-sum={cell.isSum}
+            data-is-percentile={cell.isPercentile}
+
+            className={cell.isPercentile ? "" : "percentage"}
              style={{
-                 border: "1px solid #333", padding: "8px", textAlign: "center", cursor: cell.isBlocked ? "default" : "pointer",
-                 background: cell?.isNearest ? 'cornflowerblue' : percentageColor,
-        }}
+                     border: "1px solid #333", padding: "8px", textAlign: "center", cursor: cell.isPercentile ? "default" : "pointer",
+                     background: cell?.isNearest
+                         ? 'cornflowerblue'
+                         :  heat
+                             ? heat
+                             : "initial",
+             }}
         >
-            {cell?.amount}
-            {cell.isBlocked ? '' : <span>{percentageSum}</span>}
+            {percentage || cell?.amount}
         </td>
     )
 }
 
-export default Cell
+export default React.memo(Cell)

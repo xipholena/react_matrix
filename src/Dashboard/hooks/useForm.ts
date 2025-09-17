@@ -1,9 +1,9 @@
 import React from "react";
-import {CellType, inputValues} from "../types";
+import {CellType, InputValues} from "../types";
 
 type Props = {
-    values: inputValues;
-    setValues: React.Dispatch<React.SetStateAction<inputValues>>;
+    values: InputValues;
+    setValues: React.Dispatch<React.SetStateAction<InputValues>>;
     generateMatrix:  () => CellType[][];
     setMatrix: React.Dispatch<React.SetStateAction<CellType[][] | null>>
     setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>
@@ -11,7 +11,7 @@ type Props = {
 }
 const useForm = ({setValues, setIsDisabled, setMatrix, values, generateMatrix, matrixLength}: Props) => {
     const handleChange = (key: "M" | "N" | "X", value: string) => {
-        setValues((prev: inputValues) => ({
+        setValues((prev: InputValues) => ({
             ...prev,
             [key]: Number(value),
         }));
